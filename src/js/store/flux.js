@@ -9,10 +9,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 			contacts:[]
 		},
 		actions: {
-			addContact:(contact)=>{
-				// AGregar validacion para que no admita valores vacios
+			addContact:async (contact)=>{
+        let response=await fetch(apiUrl + "/",{
+          body:JSON.stringify({...contact, agenda_slug:agendaSlug}),
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          }
+        })
+        if(!response.ok){
+          console.log(response.status + ": " + response.statusText)
+          return
+        }
+        let data=await response.json()
+				// Agregar validacion para que no admita valores vacios
 				let store=getStore()
-				let newContacts=[...store.contacts,contact]
+				let newContacts=[...store.contacts,{...contact, id:data.id}]
 				setStore({contacts:newContacts})
 			},
 			delContact:(index)=>{

@@ -18,7 +18,7 @@ export const Modal = props => {
 			setaddresse(updateContact.address)
 			setphone(updateContact.phone)
 			setemail(updateContact.email)
-			setcontactName(updateContact.name)
+			setcontactName(updateContact.full_name)
 		} else {
 			// Indice invalido
 		}
@@ -46,18 +46,7 @@ export const Modal = props => {
 				<div className="modal-content">
 					<div className="modal-header">
 						<h5 className="modal-title">Contacto {props.index}</h5>
-						{props.onClose ? (
-							<button
-								onClick={() => props.onClose()}
-								type="button"
-								className="close"
-								data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						) : (
-							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						)}
+						<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div className="modal-body">
 						<div className="mb-3">
