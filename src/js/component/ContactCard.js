@@ -14,14 +14,14 @@ export const ContactCard = props => {
 				</div>
 				<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
-						<button className="btn">
+						<button type="button" className="btn " data-bs-toggle="modal" data-bs-target={"#editModal-"+props.index}>
 							<i className="fas fa-pencil-alt mr-3" />
 						</button>
 						<button className="btn" onClick={() => props.onDelete()}>
 							<i className="fas fa-trash-alt" />
 						</button>
 					</div>
-					<label className="name lead">{props.name}</label>
+					<label className="name lead">{props.full_name}</label>
 					<br />
 					<i className="fas fa-map-marker-alt text-muted mr-3" />
 					<span className="text-muted">{props.address}</span>
